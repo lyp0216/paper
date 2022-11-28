@@ -7,7 +7,7 @@
 			$email=$_POST["mail"];
 			$pwd=$_POST["password"];
 			$tel=$_POST["tel"];
-			$id=$_SESSION['id'];
+			//$id=$_SESSION['id'];
 
 			
 				/*$from="euny900216@gmail.com";
