@@ -1,0 +1,155 @@
+.ManagerFrontPage {
+	width: 100%;
+	position: relative;
+	margin: 0 auto;
+	padding: 20px 0;
+	min-height: 100%;
+}
+
+#ManagerFrontPage #ManagerFrontSize {
+	width: 90%;
+	height: auto;
+	margin: 20px auto;
+	border: 1px solid #D9D9D9;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+	background-color: #dbdbdbe6;
+}
+
+/*表格*/
+#ManagerFrontPage #ManagerFrontSize fieldset .tab .tab-content-1 .tableDiv {
+	width: 100%;
+	margin: auto;
+}
+#ManagerFrontPage #ManagerFrontSize fieldset .tab .tab-content-2 .tableDiv {
+	width: 100%;
+	margin: auto;
+}
+#ManagerFrontPage #ManagerFrontSize fieldset .tab .tab-content-3 .tableDiv {
+	width: 100%;
+	margin: auto;
+}
+#ManagerFrontPage #ManagerFrontSize fieldset .tab .tab-content-4 .tableDiv {
+	width: 100%;
+	margin: auto;
+}
+
+table {
+	margin: 30px auto 30px auto;
+	width: 100%;
+}
+
+th {
+	background-color: rgb(239, 236, 255);
+	color: #000E2B;
+	box-shadow: inset 0px 0px 5px 1px #cccccc;
+}
+
+th,
+td {
+	border-bottom: 1px #4d79a1 solid;
+	border-left: 1px #c4cfda solid;
+	box-shadow: 0px 0px 5px 1px #cccccc;
+	text-align: center;
+	margin: 15px 0;
+	font-size: 10px;
+}
+
+/*input*/
+input {
+	width: 70%;
+	margin: 2px auto;
+	padding: 3px;
+	border-radius: 2px;
+	background-color: #6491bbd1;
+	color: #ffffff;
+	font-size: 13px;
+	font-weight: 700;
+}
+
+input:hover {
+	background-color: #b1c1d0d1;
+	color: #ffffff;
+}
+
+/* CSS */
+
+#tab {
+	width: 100%;
+	background: #87a5c1;
+}
+
+/* 頁籤ul */
+#tab>ul {
+	/* overflow: hidden; */
+	margin: 0;
+	padding: 6px 10px 0 20px;
+}
+
+#tab>ul>li {
+	list-style-type: none;
+}
+
+/* 頁籤上的文字 */
+#tab>ul>li>a {
+	text-decoration: none;
+	font-size: 15px;
+	color: rgb(239, 236, 255);
+	float: left;
+	padding: 10px;
+	margin-left: 5px;
+	font-weight: 700;
+}
+
+/*頁籤div內容*/
+#tab>div {
+	clear: both;
+	padding: 0 15px;
+	height: 0;
+	overflow: hidden;
+	visibility: hidden;
+}
+
+/*第一筆的底色*/
+span:target~#tab>ul li:first-child a {
+	background: #87a5c1;
+	color: rgb(239, 236, 255);
+}
+
+span:target~#tab>div:first-of-type {
+	visibility: hidden;
+	height: 0;
+	padding: 0 15px;
+}
+
+/*頁籤變換&第一筆*/
+span~#tab>ul li:first-child a,
+#tab-1:target~#tab>ul li a[href$="#tab-1"],
+#tab-2:target~#tab>ul li a[href$="#tab-2"],
+#tab-3:target~#tab>ul li a[href$="#tab-3"],
+#tab-4:target~#tab>ul li a[href$="#tab-4"] {
+	background: #fff;
+	color: #444680;
+	border-radius: 5px 5px 0 0;
+}
+
+span~#tab>ul li:first-child a::before,
+#tab-1:target~#tab>ul li a[href$="#tab-1"]::before,
+#tab-2:target~#tab>ul li a[href$="#tab-2"]::before,
+#tab-3:target~#tab>ul li a[href$="#tab-3"]::before,
+#tab-4:target~#tab>ul li a[href$="#tab-4"]::before {
+	background-color: white;
+
+	height: 100%;
+}
+
+/*頁籤內容顯示&第一筆*/
+span~#tab>div:first-of-type,
+#tab-1:target~#tab>div.tab-content-1,
+#tab-2:target~#tab>div.tab-content-2,
+#tab-3:target~#tab>div.tab-content-3,
+#tab-4:target~#tab>div.tab-content-4 {
+	visibility: visible;
+	height: auto;
+	background: #fff;
+
+}

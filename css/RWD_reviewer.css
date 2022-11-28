@@ -1,0 +1,263 @@
+@keyframes sliding {
+    0% {
+        transform: translateX(100%);
+        z-index: 5;
+    }
+
+    4% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(0);
+    }
+
+    24% {
+        transform: translateX(-100%);
+    }
+
+    25% {
+        transform: translateX(100%);
+        z-index: 1;
+    }
+}
+
+@media only screen and (min-width:414px) {
+    .grid-s-1 {
+        width: calc(100% / 1);
+    }
+
+    .grid-s-2 {
+        width: calc(100% / 2);
+    }
+
+    .grid-s-3 {
+        width: calc(100% / 3);
+    }
+
+    .grid-s-4 {
+        width: calc(100% / 4);
+    }
+
+    .grid-s-5 {
+        width: calc(100% / 5);
+    }
+
+    .grid-s-6 {
+        width: calc(100% / 5 * 2);
+    }
+
+}
+
+@media only screen and (min-width:768px) {
+    .grid-m-1 {
+        width: calc(100% / 1);
+    }
+
+    .grid-m-2 {
+        width: calc(100% / 2);
+    }
+
+    .grid-m-3 {
+        width: calc(100% / 3);
+    }
+
+    .grid-m-4 {
+        width: calc(100% / 4);
+    }
+
+    .grid-m-5 {
+        width: calc(100% / 5);
+    }
+
+    .grid-m-6 {
+        width: calc(100% / 5 * 2);
+    }
+
+    header #logo {
+        width: 35%;
+    }
+
+    header #logo img {
+        margin: 30px 0;
+    }
+
+    header menu {
+        width: 65%;
+        display: block !important;
+    }
+
+    header menu ul {
+        width: 100%;
+        text-align: right;
+
+        background-color: transparent;
+    }
+
+    header menu ul li {
+        display: inline-block;
+    }
+
+    header menu ul li a {
+        padding: 0 0.8em;
+    }
+
+    header menu ul li a img {
+        margin: 30px 0.3em;
+    }
+
+    header #logo img {
+        width: 30%;
+        margin: 30px 0px;
+    }
+
+    header #hamburger {
+        display: none;
+    }
+
+    footer {
+        padding: 0.5em;
+    }
+
+    /*完成評閱*/
+    .FinishPage .FinishSize {
+        width: 70%;
+        height: auto;
+    }
+
+    .FinishPage .FinishSize .order {
+        height: 60px;
+        line-height: 60px;
+    }
+
+    .FinishPage .FinishSize .order .line {
+        width: 35%;
+        border-top: 3px solid #444680;
+    }
+
+    .FinishPage .FinishSize .order .txt {
+        font-size: 20px;
+    }
+
+    .FinishPage .FinishSize .tableR th {
+        height: 28px;
+        font-size: 18px;
+        border-bottom: 2.5px solid #2f5076;
+    }
+
+    .FinishPage .FinishSize .tableR td {
+        font-size: 14px;
+    }
+    .FinishPage .FinishSize .ReaderTitle .breadcrumb .breadcrumb-item {
+        height: 100%;
+        width: 27%;
+        font-weight: 700;
+        font-size: 15px;
+    }
+
+    .FinishPage .FinishSize .ReaderTitle .breadcrumb .breadcrumb-item .breadcrumb-div {
+        width: 100%;
+        height: auto;
+        padding: 10px 35px 10px 40px;
+    }
+
+
+}
+
+@media screen and (min-width:1024px) {
+    .grid-l-1 {
+        width: calc(100%/1);
+    }
+
+    .grid-l-2 {
+        width: calc(100%/2);
+    }
+
+    .grid-l-3 {
+        width: calc(100%/3);
+    }
+
+    .grid-l-4 {
+        width: calc(100%/4);
+    }
+
+    .grid-l-5 {
+        width: calc(100%/5);
+    }
+
+    .grid-l-6 {
+        width: calc(100%/5*2);
+    }
+
+    .Reviewer .ReviewerSize {
+        width: 50%;
+        height: auto;
+        margin: 20px auto;
+    }
+
+    .Reviewer .but .ReaderBut .bottonBox .btnNew {
+        margin: 10px 180px 10px 150px;
+    }
+
+    .Reviewer .but .ReaderBut h2 {
+        margin: 15px 0px 10px 120px;
+        ;
+    }
+
+    .ReviewerStatus .ReviewerStatusSize {
+        width: 50%;
+    }
+
+    .ReviewerStatus .ReviewerStatusSize fieldset div .text {
+        display: left;
+        width: 18%;
+        font-size: 16px;
+    }
+
+    .ReviewerStatus .ReviewerStatusSize fieldset .textPp {
+        width: 90%;
+        padding: auto 0;
+    }
+
+    .ReviewerStatus .ReviewerStatusSize fieldset div .text .textP {
+        height: 40px;
+        margin: 0;
+        padding: 0;
+        left: 20px;
+    }
+
+    .ReviewerStatus .ReviewerStatusSize .ReviewerStatus fieldset .textPp #text {
+        width: 100%;
+    }
+
+    .ReviewerStatus .ReviewerStatusSize .ReviewerStatus fieldset #textareaBox #textarea {
+        margin: 0 20px 10px;
+    }
+
+}
+
+@media only screen and (min-width:1366px) {
+    .grid-xl-1 {
+        width: calc(100%/1);
+    }
+
+    .grid-xl-2 {
+        width: calc(100%/2);
+    }
+
+    .grid-xl-3 {
+        width: calc(100%/3);
+    }
+
+    .grid-xl-4 {
+        width: calc(100%/4);
+    }
+
+    .grid-xl-5 {
+        width: calc(100%/5);
+    }
+
+    .grid-xl-6 {
+        width: calc(100%/5*2);
+    }
+}

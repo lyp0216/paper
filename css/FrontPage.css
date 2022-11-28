@@ -1,0 +1,148 @@
+#theme {
+    width: 100%;
+    position: relative;
+}
+
+#theme .slide {
+    width: 100%;
+    height: calc( 100vw / 8 * 3 );
+    position: relative;
+    overflow: hidden;
+}
+#theme .slide img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*transform: translateX(100%);*/
+    z-index: 1;
+}
+#theme h2{
+    width: calc(100% / 3);
+    min-width: 375px;
+    padding: 1.5em;
+    background-color: #00000080;
+    color: #fff;
+    font-weight: 800;
+    font-size: calc(12px + 0.5vw);
+    position: absolute;
+    top: calc((100vw / 8 * 3 - 10px) / 3);
+    right: 0;
+    z-index: 5;
+}
+/*主題設定*/
+#service{
+    width: 100%;
+}
+#service .grid-1{
+    padding:1em;
+    text-align: center;
+    color: var(--theme-black);
+    font-size: 14px;
+}
+#service .grid-1 p{
+    color: var(--theme-gray);
+}
+#service .grid-1:hover i,#service .grid-1:hover h2{
+    transition: all 500ms ease;
+    color: var(--theme-front);
+}
+#service .grid-1 i + h2{
+    padding: 1em 0 0.5em;
+}
+#featured{
+    width: 100%;
+}
+#featured .drid-1:nth-of-type(1){
+    text-align: center;
+    padding: 2em 0;
+}
+#featured .grid-m-4{
+    height: calc(100vw / 3);
+    background-size: cover;
+    background-position: center;
+}
+#featured .grid-m-4:nth-of-type(2){
+    background-image: url(https://picsum.photos/400/400?random=1);
+}
+#featured .grid-m-4:nth-of-type(3){
+    background-image: url(https://picsum.photos/400/400?random=3);
+}
+#featured .grid-m-4:nth-of-type(4){
+    background-image: url(https://picsum.photos/400/400?random=5);
+}
+#featured .grid-m-4:nth-of-type(5){
+    background-image: url(https://picsum.photos/400/400?random=7);
+}
+#featured .grid-m-4:nth-of-type(6){
+    background-image: url(https://picsum.photos/400/400?random=6);
+}
+#featured .grid-m-4:nth-of-type(7){
+    background-image: url(https://picsum.photos/400/400?random=7);
+}
+#featured .grid-m-4:nth-of-type(8){
+    background-image: url(https://picsum.photos/400/400?random=8);
+}
+#featured .grid-m-4:nth-of-type(9){
+    background-image: url(https://picsum.photos/400/400?random=9);
+}
+#featured .grid-m-4 .push{
+    width: 100%;
+    height: 100%;    
+    background-color: #00000080;
+    line-height: calc(100vw / 3);
+    text-align: center;
+    opacity: 0;
+    transition: all 500ms ease;
+}
+#featured .grid-m-4:hover .push{
+    opacity: 1;
+}
+#featured .grid-m-4 .push > a{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+#project{
+    width: 100%;
+    padding: 1em 0;
+}
+#project .grid-2{
+    padding: 1em;
+}
+#project .grid-2 h4{
+    text-align: center;
+    padding: 1em 0;
+}
+#project .grid-2 .grid-1{
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+}
+#project .grid-2 .grid-1 img{
+    transform: scale(1);
+    transition: all 500ms ease;
+}
+#project .grid-2 .grid-1 h3{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    color: #fff;
+    background-color: #000000AA;
+    padding-top: calc(100vw / 5 / 2 - 16px);
+    opacity: 0;
+    transition: all 500ms ease;
+}
+#project .grid-2 .grid-1:hover img{
+    transform: scale(2);
+}
+#project .grid-2 .grid-1:hover h3{
+    opacity: 1;
+}

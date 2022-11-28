@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/RWD.css">
+    <link rel="stylesheet" href="css/FrontPage.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <title>首頁</title>
+</head>
+
+<body>
+    <header class="flex">
+        <div id="logo">
+            <a href="https://www.chihlee.edu.tw/"><img src="img/chihleeB.png" alt=""></a>
+        </div>
+        <menu>
+            <ul>
+                <li><a href="FrontPage.html" class="action">關於論文</a></li>
+                <li><a href="PostPage.php">投稿專區</a></li>
+                <li><a href="SubmissionQuery.php">投稿狀態查詢</a></li>
+                <li><a href="ReviewerFrontPage.php">審稿專區</a></li>
+                <li><a href="login.html"><img src="img/user.png" alt="" style="width: 18px;height: 18px;"></a></li>
+                <li><a href="DataUpdate.php"><img src="img/settings.png" alt="" style="width: 18px;height: 18px;"></a>
+                </li>
+            </ul>
+        </menu>
+        <div id="hamburger">
+            <div class="hamT"></div>
+            <div class="hamM"></div>
+            <div class="hamB"></div>
+        </div>
+    </header>
+    <div id="theme">
+        <div class="slide">
+            <img src="img/chihleeImg.png" width="100%" height="80%">
+        </div>
+        <h2>創新設計學院_論文投稿網站</h2>
+    </div>
+    <div id="service" class="flex">
+        <div class="grid-1 grid-m-3 grid-l-5">
+            <i class="fa-solid fa-globe fa-5x"></i>
+            <h2>RESHEARCH</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam aut asperiores beatae voluptatibus
+                dignissimos inventore in quia reprehenderit repellat quibusdam.</p>
+        </div>
+        <div class="grid-1 grid-m-3 grid-l-5">
+            <i class="fa-solid fa-display fa-5x"></i>
+            <h2>FULLY COSTOMIZABLE</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam aut asperiores beatae voluptatibus
+                dignissimos inventore in quia reprehenderit repellat quibusdam.</p>
+        </div>
+        <div class="grid-1 grid-m-3 grid-l-5">
+            <i class="fa-solid fa-gears fa-5x"></i>
+            <h2>WORK AND WORK</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam aut asperiores beatae voluptatibus
+                dignissimos inventore in quia reprehenderit repellat quibusdam.</p>
+        </div>
+        <div id="featured" class="flex">
+            <div class="grid-1">
+                <h2>FEATURED</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam aut asperiores beatae voluptatibus
+                    dignissimos inventore in quia reprehenderit repellat quibusdam.</p>
+            </div>
+        </div>
+    </div>
+    <div id="project" class="flex">
+        <div class="grid-2 grid-m-3 grid-l-5">
+            <div class="grid-1">
+                <img src="https://picsum.photos/300/300?random=1">
+                <h3>TITLE1</h3>
+            </div>
+            <h4>TITLE-1</h4>
+        </div>
+
+        <div class="grid-2 grid-m-3 grid-l-5">
+            <div class="grid-1">
+                <img src="https://picsum.photos/300/300?random=2">
+                <h3>TITLE2</h3>
+
+            </div>
+            <h4>TITLE-2</h4>
+        </div>
+
+        <div class="grid-2 grid-m-3 grid-l-5">
+            <div class="grid-1">
+                <img src="https://picsum.photos/300/300?random=3">
+                <h3>TITLE3</h3>
+            </div>
+            <h4>TITLE-3</h4>
+        </div>
+        <div class="grid-2 grid-m-3 grid-l-5">
+            <div class="grid-1">
+                <img src="https://picsum.photos/300/300?random=4">
+                <h3>TITLE4</h3>
+            </div>
+            <h4>TITLE-4</h4>
+        </div>
+    </div>
+
+
+    </div>
+    <footer>
+        Copyright &copy; 2022 Yu. All right reserved.<br>
+        220305 新北市板橋區文化路1段313號
+        <br>
+        No.313, Sec. 1, Wenhua Rd., Banqiao Dist., New Taipei City 220305, Taiwan (R.O.C.)
+        <br>
+        TEL：(02)2257-6167 │ (02)2257-6168 │ FAX：(02)2258-3710
+    </footer>
+</body>
+
+</html>
+<script>
+    let hb = document.getElementById("hamburger");
+    let meun = document.getElementsByTagName("menu")[0];
+    let hamT = document.getElementsByClassName("hamT")[0];
+    let hamM = document.getElementsByClassName("hamM")[0];
+    let hamB = document.getElementsByClassName("hamB")[0];
+    hb.addEventListener("click", function () {
+        if (meun.style.display == "none" || meun.style.display == "") {
+            meun.style.display = "block";
+            hamT.style.transform = "rotate(26deg)";
+            hamM.style.opacity = "0";
+            hamB.style.transform = "rotate(-26deg)";
+        } else {
+            meun.style.display = "none";
+            hamT.style.transform = "rotate(0deg)";
+            hamM.style.opacity = "1";
+            hamB.style.transform = "rotate(0deg)";
+        }
+    })
+</script>

@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+.container{
+	width: 65%;
+	margin:0 auto;
+	min-height: 100%;
+	position: relative;
+	padding-top: 30px;
+	min-height:100%;
+	margin-bottom: -70px;
+    /*margin-bottom:-70px;
+	*/
+}
+.reader{
+	width: 70%;
+	height: auto;
+	margin:0px auto;
+	/*padding-bottom: 50px;
+	border: 1px solid #D9D9D9;
+	box-shadow:0 0 5px rgba(0, 0, 0, 0.5);
+	border-radius: 10px;*/
+	margin-bottom:70px;
+}
+.ReaderTitle{
+	width: 100%;
+	height: 40px;
+	border-bottom: 1.5px solid #8cb8e0;
+	
+}
+.breadcrumb{
+	width: 100%;
+	height: 40px;
+	background-color:#8cb8e0 ;
+	box-shadow:inset 20px 0px 8px 5px rgba(206, 215, 223, 0.5);
+	border-radius:10px 10px 0 0;
+	
+}
+.breadcrumb .breadcrumb-item{
+	width: 100%;
+	height: 100%;
+	background-color:#7599BA;
+	padding: 10px 25px 5px 40px;
+	list-style: none;
+	border-radius:10px 0px 0 0;
+}
+.breadcrumb .active{
+	width: 20%;
+
+
+}
+.ReaderTitle span{
+	color:#fff;
+	text-align: left;
+	
+}
+.breadcrumb-item a{
+	text-decoration:none;
+	color:#fff;
+	font-weight:bold;
+}

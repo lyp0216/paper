@@ -1,0 +1,94 @@
+#SubmissionQuery {
+	width: 100%;
+	min-height: 100%;
+	margin: 0 auto;
+	padding: 20px 0;
+	min-height: 100%;
+	margin-bottom:-80px;
+}
+#SubmissionQuery #SubmissionQuerySize{
+	width: 90%;
+	margin: 0 auto;
+}
+
+#SubmissionQuery #SubmissionQuerySize fieldset {
+	background: #fff;
+	border: solid 1px #ddd;
+	border-radius: 4px;
+	box-shadow: 0 1px 8px rgba(0, 0, 0, .2);
+	-webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, .2);
+	color: #333;
+	padding: 40px 0 0;
+	position: relative;
+	margin: 20px auto;
+	height: auto;
+	width: 95%;
+}
+
+#SubmissionQuery #SubmissionQuerySize fieldset legend {
+	font-weight: 900;
+	height: 20px;
+	width: auto;
+	left: 10px;
+	line-height: 40px;
+	position: absolute;
+	top: 0;
+	margin-bottom: 30px;
+	font-size: 20px;
+}
+
+/*表格*/
+#SubmissionQuery #SubmissionQuerySize fieldset table {
+	width: 90%;
+	margin: 10px auto;
+	text-align: center;
+	border-spacing: 2px 0px;
+	border-collapse:separate;
+}
+
+#SubmissionQuery #SubmissionQuerySize fieldset table .SubmissionQueryTableTh {
+	background-color: #88afd3;
+	color: #fff;
+	font-weight: 600;
+	font-size: 14.5px;
+	letter-spacing: 1.5px;
+}
+.SubmissionQuery .SubmissionQuerySize fieldset table .SubmissionQueryTableTh th{
+	border-radius: 3px;
+}
+
+.SubmissionQuery .SubmissionQuerySize fieldset table .SubmissionQueryTableTh .SubmissionQueryTableWriter {
+	width: 15%;
+}
+
+.SubmissionQuery .SubmissionQuerySize fieldset table .SubmissionQueryTableTh .SubmissionQueryTableName {
+	width: 35%;
+}
+
+.SubmissionQuery .SubmissionQuerySize fieldset table .SubmissionQueryTableTh .SubmissionQueryTableCategory {
+	width: 12%;
+}
+
+.SubmissionQuery .SubmissionQuerySize fieldset table .SubmissionQueryTableTh .SubmissionQueryTableUpload {
+	width: 18%;
+}
+
+.SubmissionQuery .SubmissionQuerySize fieldset table .SubmissionQueryTableTh .SubmissionQueryTableState {
+	width: 9%;
+}
+.SubmissionQuery .SubmissionQuerySize fieldset table tr {
+	margin: 30px 0;
+}
+.SubmissionQuery .SubmissionQuerySize fieldset table tr td {
+	border-bottom: 1px var(--theme-table) double;
+	padding: 3px 0;
+	width: 5px;
+	font-size: 13px;
+}
+
+.SubmissionQuery .SubmissionQuerySize fieldset table tr td span {
+	white-space: nowrap;
+	width: 50px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

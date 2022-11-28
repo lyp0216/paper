@@ -1,0 +1,120 @@
+.under{
+    min-height: 100%;
+}
+section {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 78vh;
+    /*background: linear-gradient(to bottom, #8cb8e0, #0a2e75);*/
+    width: 100%;
+}
+
+.box {
+    position: relative;
+    width: 300px;
+    height: auto;
+    background: rgba(255, 255, 255, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+form {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 20px 35px;
+}
+
+/* 標題樣式 */
+
+form h2 {
+    position: relative;
+    color: #005299;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    margin: 0 0 20px 15px;
+    cursor: pointer;
+}
+
+form h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0px;
+    height: 3px;
+    background: #005299;
+    transition: 0.5s;
+}
+
+form h2:hover:before {
+    width: 53px;
+}
+
+form .inputBox {
+    width: 80%;
+    margin: 20px auto;
+}
+
+/*輸入框文字*/
+form .inputBox p {
+    padding: 5px 0px;
+}
+
+/* 輸入框樣式 */
+
+form .inputBox input {
+    width: 100%;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    border: 2px solid rgba(0, 82, 153, 0.3);
+    border-right: 2px solid rgba(0, 82, 153, 0.4);
+    border-bottom: 2px solid rgba(0, 82, 153, 0.4);
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #005299;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+
+}
+
+form .inputBox input::placeholder {
+    color: #005299;
+}
+
+/* CSS Document */
+.container section form input[type="submit"] {
+    margin-bottom: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #666;
+    background: #E2E2E2;
+    width: 120px;
+    height: 35px;
+    margin: 0 80px 20px 80px;
+    border-radius: 5px;
+    border: 0;
+}
+
+form .inputBox input[type="submit"]:hover {
+
+    background: #C8C8C8;
+
+}
+
+.container section form p {
+    font-size: 10px;
+    margin-right: 20px;
+}
