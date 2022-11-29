@@ -61,6 +61,7 @@
                             <option value="教育類">教育類</option>
                             <option value="醫學類">醫學類</option>
                             <option value="工程技術類">工程技術類</option>
+                            <option value="藝術類">藝術類</option>
                         </select>
                     </div>
                 </div>
