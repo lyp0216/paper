@@ -9,7 +9,7 @@ function pendingreview()
 
         $link =connect(DB_HOST,DB_USER,DB_PWD,DB_DATABASE)
         or die("無法開啟資料連接!<br/>");
-		$sql = "SELECT * FROM article WHERE state = '待評閱'";
+		$sql = "SELECT * FROM article WHERE state = '3'";
 							
 		if ($result = mysqli_query($link,$sql))
 			{
@@ -54,7 +54,7 @@ function completereview()
 
         $link =connect(DB_HOST,DB_USER,DB_PWD,DB_DATABASE)
         or die("無法開啟資料連接!<br/>");
-							$sql = "SELECT * FROM article WHERE state = '完成評閱'"; 
+							$sql = "SELECT * FROM article WHERE state = '4'"; 
 							
 							if ($result = mysqli_query($link,$sql))
 							{
