@@ -117,6 +117,7 @@
             </fieldset>
             <div>
             <form action="selection.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="aId" value="<?php echo"$row[1]";?>">
                 <fieldset>
                     <legend>是否符合主題？</legend>
                     <div class="radio-group">

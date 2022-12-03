@@ -12,6 +12,7 @@ if(isset($_POST["but1"])){
 	$number9=$_POST["number9"];
 	$number10=$_POST["number10"];
 	$number11=$_POST["number11"];
+    $aId = $_POST["aId"];
 	
 	require_once("cfg.php");
     require_once("sqlLink.php");
@@ -20,11 +21,13 @@ if(isset($_POST["but1"])){
     or die("無法開啟資料連接!<br/>");
 		
     		
-    $sql="INSERT INTO selection(稿件評論狀態,是否符合主題？,論文是否具有參考價值,論文長度,論文內容的質量,實驗評估,技術正確性,論文獨創性,論文的完整度,論文插圖質量,參考文獻的充分性,評論結果) 
-	value ('$number11','$number1','$number2','$number3','$number4','$number5','$number6','$number7','$number8','$number9','$number10','$number11')";
+    $sql="INSERT INTO selection(稿件評論狀態,是否符合主題？,論文是否具有參考價值,論文長度,論文內容的質量,實驗評估,技術正確性,論文獨創性,論文的完整度,論文插圖質量,參考文獻的充分性,評論結果,articleID) 
+	value ('$number11','$number1','$number2','$number3','$number4','$number5','$number6','$number7','$number8','$number9','$number10','$number11','$aId')";
     $result=mysqli_query($link,$sql);
 	
-	
+    $sql = "UPDATE `article` SET `state`=4 WHERE `articleID`='$aId'";
+	$result=mysqli_query($link,$sql);
+    
    if (mysqli_affected_rows($link)>0) {
 
        $id1= mysqli_insert_id ($link);

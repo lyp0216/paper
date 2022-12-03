@@ -50,9 +50,9 @@ function AccountHandle($mail) {
         $pwd = generateRandomString(12);
 
         //新增到資料庫
-        $sqlcmd = "INSERT INTO `user`(`id`, `pwd`, `mail`, `identity`) VALUES ('$ac','$pwd','$mail','2')";
+        $sqlcmd = "INSERT INTO `user`(`pwd`, `mail`, `identity`) VALUES ('$pwd','$mail','2')";
         if (mysqli_query($link, $sqlcmd)) {
-            $acStr = "<div>您的帳號為:" . $ac . "</div>
+            $acStr = "<div>您的帳號為您的信箱</div>
     
             <div>您的預設密碼為:" . $pwd . "</div>";
         }
