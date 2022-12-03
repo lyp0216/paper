@@ -9,7 +9,7 @@ require_once("sqlLink.php");
 
     $link =connect(DB_HOST,DB_USER,DB_PWD,DB_DATABASE)
     or die("無法開啟資料連接!<br/>");
-						    $sql = "SELECT articleID , articlename , invitationdate , deadline , state FROM article WHERE state = '完成評閱'"; 
+						    $sql = "SELECT articleID , articlename , invitationdate , deadline , state FROM article WHERE state = '4'"; 
                             $result = mysqli_query($link, $sql);							
 
                             $per_total = mysqli_num_rows($result);
