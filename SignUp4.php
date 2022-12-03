@@ -53,10 +53,10 @@
 				$mail->IsHTML(true);                      //郵件內容為html
 				$mail->AddAddress("$email");            //收件者郵件及名稱
 				if(!$mail->Send()){
-					echo "寄信失敗! ";   
+					echo "<script>alert('寄信失敗!')</script>";   
 				}
 					else{
-						echo "<b>查看信件</b>";
+						echo "<script>alert('查看信件!')</script>";
 					}
 					
 
