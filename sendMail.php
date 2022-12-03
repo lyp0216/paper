@@ -1,7 +1,28 @@
 <?php
-//require_once("checkLogin.php");
+require_once("cfg.php");
+require_once("sqlLink.php");
 
-//產生一個10位數編碼
+$mail = $_REQUEST["m"];
+$articleID = $_REQUEST["id"];
+//$mail = $_REQUEST["mail"];
+
+if ($mail != "") {
+    $link = connect(DB_HOST, DB_USER, DB_PWD, DB_DATABASE);
+
+    $sql = "SELECT `articleID`, `value`, `reply`, `mail` FROM `assigning` WHERE `articleID`='$articleID' AND `mail`='$mail' AND `reply`='2'";
+	$result = mysqli_query($link, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        echo 0;
+    }
+    else {
+        //
+        echo 1;
+        SendMail($mail, $articleID);
+    }
+    mysqli_close($link);
+}
+
 function generateRandomString($length = 10) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
@@ -12,34 +33,11 @@ function generateRandomString($length = 10) {
     return $randomString;
 }
 
-function CheckMail($mail, $articleID) {
-    require_once("cfg.php");
-    require_once("sqlLink.php");
-    $link = connect(DB_HOST, DB_USER, DB_PWD, DB_DATABASE);
-
-    $sqlcmd = "SELECT `articleID`, `value`, `reply`, `mail` FROM `assigning` WHERE `articleID`='$articleID' AND `mail`='$mail' AND `reply`='reject'";
-
-    $result = mysqli_query($link, $sqlcmd);
-
-    //如有資料
-    if (mysqli_num_rows($result) > 0) {
-        $check = 1;
-    }
-    else {
-        $check = 0;
-    }
-    mysqli_free_result($result);
-    mysqli_close($link);
-    return $check;
-}
-
 function AccountHandle($mail) {
-    require_once("cfg.php");
-    require_once("sqlLink.php");
-    $link = connect(DB_HOST, DB_USER, DB_PWD, DB_DATABASE);
 
+    $link = connect(DB_HOST, DB_USER, DB_PWD, DB_DATABASE);
     //尋找是否已有帳號
-    $sqlcmd = "SELECT `id`, `pwd`, `name`, `mail`, `identity` FROM `user` WHERE `mail`='$mail' AND `identity`='reviewer'";
+    $sqlcmd = "SELECT `id`, `pwd`, `name`, `mail`, `identity` FROM `user` WHERE `mail`='$mail' AND `identity`=2";
     $result = mysqli_query($link, $sqlcmd);
 
     //已有帳號
@@ -52,7 +50,7 @@ function AccountHandle($mail) {
         $pwd = generateRandomString(12);
 
         //新增到資料庫
-        $sqlcmd = "INSERT INTO `user`(`id`, `pwd`, `mail`, `identity`) VALUES ('$ac','$pwd','$mail','reviewer')";
+        $sqlcmd = "INSERT INTO `user`(`id`, `pwd`, `mail`, `identity`) VALUES ('$ac','$pwd','$mail','2')";
         if (mysqli_query($link, $sqlcmd)) {
             $acStr = "<div>您的帳號為:" . $ac . "</div>
     
@@ -63,15 +61,10 @@ function AccountHandle($mail) {
     return $acStr;
 }
 
-
-//if (isset($_POST["mail"]) && $_POST["mail"] != "") {
 function SendMail($sendMail, $articleID) {
-    require_once("cfg.php");
-    require_once("sqlLink.php");
-    $link = connect(DB_HOST, DB_USER, DB_PWD, DB_DATABASE);
     
-    //$articleID = $_SESSION['articleID'];
-    $sqlcmd = "SELECT `articleID`, `articlename`, `abstract` FROM `article` WHERE `articleID`='$articleID'";
+    $link = connect(DB_HOST, DB_USER, DB_PWD, DB_DATABASE);
+    $sqlcmd = "SELECT `articleID`, `articlename`, `abstract`, `category` FROM `article` WHERE `articleID`='$articleID'";
     $result = mysqli_query($link, $sqlcmd);
     $articleInfo = null;
 
@@ -91,22 +84,24 @@ function SendMail($sendMail, $articleID) {
 
 
     //網址 須隨者本地資料位置更改
-    $url_agree = "http://localhost:8080/myWeb/npaper/replyN.php?value=$number&&reply=agree";
-    $url_reject = "http://localhost:8080/myWeb/npaper/replyN.php?value=$number&&reply=reject";
+    $url_downloadFile = "";
+    $url_agree = "http://localhost:8080/paper/replyN.php?value=$number&&reply=1";
+    $url_reject = "http://localhost:8080/paper/replyN.php?value=$number&&reply=2";
 
     //帳號密碼
     $acStr = AccountHandle($sendMail);
 
     //信件資料
+    $url_download = "http://localhost:8080/paper/123.docx";
     $to = $sendMail;
-    $subject = "OOO的審稿者邀請: OO領域"; //主旨
+    $subject = "致理e化投稿網 論文審稿邀請: " . $articleInfo['category']; //主旨
     $message = "
     <html>
     <head>
     </head>
     <body>
     
-    <div>尊敬的博士您好</div><br>
+    <div>學士您好</div><br>
     
     <div>我們誠摯的邀請您來審閱 \"" . $articleInfo["articlename"] . "\" 論文文章</div><br>
     
@@ -122,7 +117,7 @@ function SendMail($sendMail, $articleID) {
     
     <div>如要下載並閱讀此文章的PDF,請點擊此連結:</div>
     
-    <div><a href='" . "https://translate.google.com.tw/?hl=zh-TW" . "'>下載文章</a></div><br>
+    <div><a href='" . $url_download . "'>下載文章</a></div><br>
     
     <div>若是您想要審閱此篇文章,請點擊此連結:</div>
     
@@ -141,31 +136,29 @@ function SendMail($sendMail, $articleID) {
 
     //判斷信件是否成功寄出
     if(mail($to, $subject, $message, $headers)) {
-        $articleID = $_SESSION['articleID'];
 
         //新增資料
-        $sqlA = "INSERT INTO `assigning`(`articleID`, `value`, `mail`, `reply`) VALUES ('$articleID','$number', '$to', 'unreply')";
+        $sqlA = "INSERT INTO `assigning`(`articleID`, `value`, `mail`, `reply`) VALUES ('$articleID','$number', '$to', '0')";
 
         if (mysqli_query($link, $sqlA)) {
 
             //修改該文件的狀態
-            $sql = "UPDATE `article` SET `state`='分派中' WHERE `articleID`='$articleID'";
+            $sql = "UPDATE `article` SET `state`='2' WHERE `articleID`='$articleID'";
 
             if (mysqli_query($link, $sql)){
                 mysqli_free_result($result);
-                mysqli_close($link);
+
                 return 0;
-                exit;
+                
             }
         }
     }
     else {
         mysqli_free_result($result);
-        mysqli_close($link);
+
         return 1;
-        exit;
+        
     }
-    
+    mysqli_close($link);
 }
 ?>
-

@@ -8,7 +8,7 @@
 					$workname=$_POST["workName"];
 					$abstract=$_POST["abstract"];
 					//$file=$_POST["file"];
-					$state="尚未分派";
+					$state=1;
 					$category=$_POST["postSelect"];
 					
 					require_once("cfg.php");

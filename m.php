@@ -24,25 +24,9 @@ require_once("mp.php");
                         <div class="tableDiv" id="tableDiv">
                             
                             <table>
-                                <?php showInfo("尚未分派");?>
-                                <!--<tr>
-                                    <th>文章編號</th>
-                                    <th>文章標題</th>
-                                    <th class="summary">摘要</th>
-                                    <th>作者</th>
-                                    <th>類別</th>
-                                    <th>期限</th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <td>1234567</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    
-                                    <td><input type="button" value="分派"></td>
-                                </tr>-->
+
+                            <?php showInfo(1);?>
+                                
                             </table>
                         </div>
                     </div>
@@ -50,7 +34,7 @@ require_once("mp.php");
                         <div class="tableDiv">
                             <table>
 
-                            <?php showInfo("分派中");?>
+                            <?php showInfo(2);?>
 
                             </table>
                         </div>
@@ -59,7 +43,7 @@ require_once("mp.php");
                         <div class="tableDiv">
                             <table>
                             
-                            <?php showInfo("審稿中");?>
+                            <?php showInfo(3);?>
 
                             </table>
                         </div>
@@ -68,7 +52,7 @@ require_once("mp.php");
                         <div class="tableDiv">
                             <table>
                             
-                            <?php showInfo("已審稿");?>
+                            <?php showInfo(4);?>
 
                             </table>
                         </div>
@@ -77,3 +61,23 @@ require_once("mp.php");
             </fieldset>
         </div>
     </div>
+
+    <script>
+        var i=0;
+        var btnidstr = "assign_" + i;
+        var btn = [];
+
+        while (document.getElementById(btnidstr)) {
+            
+            document.getElementById(btnidstr).addEventListener("click", btnF);
+
+            i++;
+            btnidstr = "assign_" + i;
+        }
+        
+
+        function btnF() {
+            var url = "assign.php?value=" + this.value;
+            window.location.assign(url);
+        }
+    </script>

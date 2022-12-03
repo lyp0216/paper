@@ -25,69 +25,70 @@ function showInfo($state) {
 
     if (isset($datas)) {
 
-        if ($state == "尚未分派") {
+        if ($state == 1) {
             $i=1;
             $_SESSION['assign'] = $datas;
             $btnTitle = "<th></th>";
             $btnStr = "<td><input type='button' value='分派' onClick=location='assign.php?value='></td>";
             $localNum = 75;
 
-            echo "
+?>
                 <tr>
-                <th>文章編號</th>
-                <th>文章標題</th>
-                <th>作者</th>
-                <th>類別</th>
-                <th>期限</th>
-                $btnTitle
+                    <th>文章編號</th>
+                    <th>文章標題</th>
+                    <th>作者</th>
+                    <th>類別</th>
+                    <th>期限</th>
+                    <th></th>
                 </tr>
-            ";
+<?php
 
             foreach ($datas as $key => $row) {
                 $btn = substr_replace($btnStr, $i, $localNum, 0);
-                echo "
+?>
                     <tr>
-                        <td>{$row["articleID"]}</td>
-                        <td>{$row["articlename"]}</td>
-                        <td>{$row["name"]}</td>
-                        <td>{$row["category"]}</td>
-                        <td>{$row["deadline"]}</td>
-                        $btn
+                        <td><span id=''><?php echo $row["articleID"];?></span></td>
+                        <td><?php echo $row["articlename"]?></td>
+                        <td><?php echo $row["name"]?></td>
+                        <td><?php echo $row["category"]?></td>
+                        <td><?php echo $row["deadline"]?></td>
+                        <td><button type="button" id="<?php echo "assign_" . $key;?>" value="<?php echo $key;?>">分派</button></td>
                     </tr>
-                ";
+<?php
     
                 $i++;
             }
         }
-        elseif ($state == "已審稿") {
+        elseif ($state == 4) {
             $i=1;
+            $_SESSION['reviewed'] = $datas;
             $btnTitle = "<th></th>";
             $btnStr = "<td><input type='button' value='確認' onClick=location='LAST.php?value='></td>";
             $localNum = 73;
 
-            echo "
+?>
                 <tr>
-                <th>文章編號</th>
-                <th>文章標題</th>
-                <th>作者</th>
-                <th>類別</th>
-                <th>期限</th>
-                $btnTitle
+                    <th>文章編號</th>
+                    <th>文章標題</th>
+                    <th>作者</th>
+                    <th>類別</th>
+                    <th>期限</th>
+                    <th></th>
                 </tr>
-            ";
+<?php
 
             foreach ($datas as $key => $row) {
                 $btn = substr_replace($btnStr, $i, $localNum, 0);
-                echo "
-                    <tr>
-                        <td>{$row["articleID"]}</td>
-                        <td>{$row["articlename"]}</td>
-                        <td>{$row["name"]}</td>
-                        <td>{$row["category"]}</td>
-                        <td>{$row["deadline"]}</td>
-                        $btn
-                    </tr>
-                ";
+?>
+                <tr>
+                    <td><span id=''><?php echo $row["articleID"];?></span></td>
+                    <td><?php echo $row["articlename"]?></td>
+                    <td><?php echo $row["name"]?></td>
+                    <td><?php echo $row["category"]?></td>
+                    <td><?php echo $row["deadline"]?></td>
+                    <td><button type="button" id="<?php echo $i;?>" onClick=location='<?php echo "LAST.php?value=$i"?>'>確認</button></td>
+                </tr>
+<?php
     
                 $i++;
             }
@@ -98,40 +99,36 @@ function showInfo($state) {
             $btnStr = "";
             $localNum = 0;
 
-            echo "
+?>
                 <tr>
-                <th>文章編號</th>
-                <th>文章標題</th>
-                <th>作者</th>
-                <th>類別</th>
-                <th>期限</th>
-                $btnTitle
+                    <th>文章編號</th>
+                    <th>文章標題</th>
+                    <th>作者</th>
+                    <th>類別</th>
+                    <th>期限</th>
                 </tr>
-            ";
+<?php
 
             foreach ($datas as $key => $row) {
-                echo "
-                    <tr>
-                        <td>{$row["articleID"]}</td>
-                        <td>{$row["articlename"]}</td>
-                        <td>{$row["name"]}</td>
-                        <td>{$row["category"]}</td>
-                        <td>{$row["deadline"]}</td>
-                    </tr>
-                ";
+?>
+                <tr>
+                    <td><span id=''><?php echo $row["articleID"];?></span></td>
+                    <td><?php echo $row["articlename"]?></td>
+                    <td><?php echo $row["name"]?></td>
+                    <td><?php echo $row["category"]?></td>
+                    <td><?php echo $row["deadline"]?></td>
+                </tr>
+<?php
             }
         }
-
-        
-        
-        
     }
     else {
-        echo "
+?>
             <tr>
                 <td>目前尚無資料</td>
             </tr>
-        ";
+<?php
     }
 }
 ?>
+

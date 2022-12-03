@@ -17,7 +17,7 @@ function replyHandle($number, $reply) {
     if ($datas != null) {
 
         //確認尚未回覆
-        if($datas['reply'] == "unreply") {
+        if ($datas['reply'] == "0" AND $reply==1 or $reply==2) {
 
             $articleID = $datas['articleID'];
             $mail = $datas['mail'];
@@ -25,24 +25,30 @@ function replyHandle($number, $reply) {
             $sqlcmd = "UPDATE `assigning` SET `reply`='$reply' WHERE `articleID`='$articleID' AND `mail`='$mail'";
             
             if (mysqli_query($link, $sqlcmd)) {
-                if ($reply == "agree") {
-                    $sqlcmd = "UPDATE `article` SET `state`='審稿中' WHERE `articleID`='$articleID'";
+                if ($reply == "1") {
+                    $sqlcmd = "UPDATE `article` SET `state`='3' WHERE `articleID`='$articleID'";
                     if (mysqli_query($link, $sqlcmd)) {
-                        echo "感謝您接受審稿</br>";
-                        echo "前往登入";
+?>
+                        <div>感謝您接受審稿</div>
+                        <div><a href="login.html">前往登入</a></div>
+<?php
                     }
                 }
-                elseif ($reply == "reject") {
-                    $sqlcmd = "UPDATE `article` SET `state`='尚未分派' WHERE `articleID`='$articleID'";
+                elseif ($reply == "2") {
+                    $sqlcmd = "UPDATE `article` SET `state`='1' WHERE `articleID`='$articleID'";
                     if (mysqli_query($link, $sqlcmd)) {
-                        echo "感謝您的回覆</br>";
+?>                        
+                        <div>感謝您的回覆</div>
+<?php
                     }
                 }
             }
         }
-        else {
+        else if ($datas['reply'] == 1 OR $datas['reply'] == 2) {
             echo "您已回覆過此邀請";
         }
+        else 
+            header("Location: login.html"); 
     }
     else {
         echo "什麼都沒有";
@@ -50,11 +56,14 @@ function replyHandle($number, $reply) {
     mysqli_close($link);
 }
 
-if (isset($_GET["value"]) && isset($_GET["reply"])) {
+if (isset($_GET["value"]) && isset($_GET["reply"]) && $_GET["reply"]==1 OR $_GET["reply"]==2) {
 
     $number = $_GET["value"];
     $reply = $_GET["reply"];
 
     replyHandle($number, $reply);
+}
+else {
+    header("Location: login.html"); 
 }
 ?>
