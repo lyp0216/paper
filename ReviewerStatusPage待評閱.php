@@ -16,6 +16,7 @@
                             $row = mysqli_fetch_row($result);
 ?>
 
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -116,32 +117,32 @@
                 </li>
             </fieldset>
             <div>
-            <form action="selection.php" method="post" enctype="multipart/form-data">
+            <form name="form1"action="" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="aId" value="<?php echo"$row[1]";?>">
                 <fieldset>
                     <legend>是否符合主題？</legend>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="4" name="number1" value="非常符合">
+                        <input type="radio" class="radio-input" id="4" name="number1" value="1">
                         <label for="4" class="radio-label" ><span class="radio-button"></span>非常符合</label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="5" name="number1" value="符合"><label for="5"
-                            class="radio-label"><span class="radio-button" ></span>符合</label>
+                        <input type="radio" class="radio-input" id="5" name="number1" value="2">
+						<label for="5" class="radio-label"><span class="radio-button" ></span>符合</label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="6" name="number1"value="普通">
+                        <input type="radio" class="radio-input" id="6" name="number1"value="3">
                         <label for="6" class="radio-label">
                             <span class="radio-button"></span>普通
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="7" name="numbe1"value="不太符合">
+                        <input type="radio" class="radio-input" id="7" name="number1"value="4">
                         <label for="7" class="radio-label">
                             <span class="radio-button"></span>不太符合
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="8" name="number1"value="不符合">
+                        <input type="radio" class="radio-input" id="8" name="number1"value="5">
                         <label for="8" class="radio-label">
                             <span class="radio-button"></span>不符合
                         </label>
@@ -151,31 +152,31 @@
                 <fieldset>
                     <legend>論文是否具有參考價值</legend>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="9" name="number2"value="對廣大讀者具有高參考價值">
+                        <input type="radio" class="radio-input" id="9" name="number2"value="6">
                         <label for="9" class="radio-label">
                             <span class="radio-button"></span>對廣大讀者具有高參考價值
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="10" name="number2"value="對有限讀者有高參考價值">
+                        <input type="radio" class="radio-input" id="10" name="number2"value="7">
                         <label for="10" class="radio-label">
                             <span class="radio-button"></span>對有限讀者有高參考價值
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="11" name="number2"value="對廣大讀者有邊際參考價值">
+                        <input type="radio" class="radio-input" id="11" name="number2"value="8">
                         <label for="11" class="radio-label">
                             <span class="radio-button"></span>對廣大讀者有邊際參考價值
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="12" name="number2"value="對有限讀者有邊際參考價值">
+                        <input type="radio" class="radio-input" id="12" name="number2"value="9">
                         <label for="12" class="radio-label">
                             <span class="radio-button"></span>對有限讀者有邊際參考價值
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="13" name="number2"value="無參考價值">
+                        <input type="radio" class="radio-input" id="13" name="number2"value="10">
                         <label for="13" class="radio-label">
                             <span class="radio-button"></span>無參考價值
                         </label>
@@ -184,19 +185,19 @@
                 <fieldset>
                     <legend>論文長度</legend>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="14" name="number3"value="合適的">
+                        <input type="radio" class="radio-input" id="14" name="number3"value="11">
                         <label for="14" class="radio-label">
                             <span class="radio-button"></span>合適的
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="15" name="number3"value="需延長請在下方說明">
+                        <input type="radio" class="radio-input" id="15" name="number3"value="12">
                         <label for="15" class="radio-label">
                             <span class="radio-button"></span>需延長(請在下方說明)
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="16" name="number3"value="需縮短(請在下方說明)">
+                        <input type="radio" class="radio-input" id="16" name="number3"value="13">
                         <label for="16" class="radio-label">
                             <span class="radio-button"></span>需縮短(請在下方說明)
                         </label>
@@ -205,19 +206,19 @@
                 <fieldset>
                     <legend>論文內容的質量</legend>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="17" name="number4"value="出色的">
+                        <input type="radio" class="radio-input" id="17" name="number4"value="14">
                         <label for="17" class="radio-label">
                             <span class="radio-button"></span>出色的
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="18" name="number4"value="一般">
+                        <input type="radio" class="radio-input" id="18" name="number4"value="15">
                         <label for="18" class="radio-label">
                             <span class="radio-button"></span>一般
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="19" name="number4"value="較差的">
+                        <input type="radio" class="radio-input" id="19" name="number4"value="16">
                         <label for="19" class="radio-label">
                             <span class="radio-button"></span>較差的
                         </label>
@@ -226,19 +227,19 @@
                 <fieldset>
                     <legend>實驗評估</legend>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="20" name="number5"value="具有說服力">
-                        <label for="20" class="radio-label">
+                        <input type="radio" class="radio-input" id="20" name="number5"value="17">
+                        <label for="21" class="radio-label">
                             <span class="radio-button"></span>具有說服力
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="21" name="number5"value="有限但令人信服">
+                        <input type="radio" class="radio-input" id="21" name="number5"value="18">
                         <label for="21" class="radio-label">
                             <span class="radio-button"></span>有限但令人信服
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="22" name="number5"value="無說服力的">
+                        <input type="radio" class="radio-input" id="22" name="number5"value="19">
                         <label for="22" class="radio-label">
                             <span class="radio-button"></span>無說服力的
                         </label>
@@ -247,19 +248,19 @@
                 <fieldset>
                     <legend>技術正確性</legend>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="23" name="number6"value="正確的">
+                        <input type="radio" class="radio-input" id="23" name="number6"value="20">
                         <label for="23" class="radio-label">
                             <span class="radio-button"></span>正確的
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="24" name="number6"value="部分正確">
+                        <input type="radio" class="radio-input" id="24" name="number6"value="21">
                         <label for="24" class="radio-label">
                             <span class="radio-button"></span>部分正確
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="25" name="number6"value="不正確">
+                        <input type="radio" class="radio-input" id="25" name="number6"value="22">
                         <label for="25" class="radio-label">
                             <span class="radio-button"></span>不正確
                         </label>
@@ -268,19 +269,19 @@
                 <fieldset>
                     <legend>論文獨創性</legend>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="26" name="number7"value="出色的">
+                        <input type="radio" class="radio-input" id="26" name="number7"value="23">
                         <label for="26" class="radio-label">
                             <span class="radio-button"></span>出色的
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="27" name="number7"value="一般">
+                        <input type="radio" class="radio-input" id="27" name="number7"value="24">
                         <label for="27" class="radio-label">
                             <span class="radio-button"></span>一般
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="28" name="number7"value="較差的">
+                        <input type="radio" class="radio-input" id="28" name="number7"value="25">
                         <label for="28" class="radio-label">
                             <span class="radio-button"></span>較差的
                         </label>
@@ -289,19 +290,19 @@
                 <fieldset>
                     <legend>論文的完整度</legend>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="29" name="number8"value="出色的">
+                        <input type="radio" class="radio-input" id="29" name="number8"value="26">
                         <label for="29" class="radio-label">
                             <span class="radio-button"></span>出色的
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="30" name="number8"value="非常符合">
+                        <input type="radio" class="radio-input" id="30" name="number8"value="27">
                         <label for="30" class="radio-label">
                             <span class="radio-button"></span>一般
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="31" name="number8"value="較差的">
+                        <input type="radio" class="radio-input" id="31" name="number8"value="28">
                         <label for="31" class="radio-label">
                             <span class="radio-button"></span>較差的
                         </label>
@@ -310,19 +311,19 @@
                 <fieldset>
                     <legend>論文插圖質量</legend>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="32" name="number9"value="出色的">
+                        <input type="radio" class="radio-input" id="32" name="number9"value="29">
                         <label for="32" class="radio-label">
                             <span class="radio-button"></span>出色的
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="33" name="number9"value="一般">
+                        <input type="radio" class="radio-input" id="33" name="number9"value="30">
                         <label for="33" class="radio-label">
                             <span class="radio-button"></span>一般
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="34" name="number9"value="較差的">
+                        <input type="radio" class="radio-input" id="34" name="number9"value="31">
                         <label for="34" class="radio-label">
                             <span class="radio-button"></span>較差的
                         </label>
@@ -331,19 +332,19 @@
                 <fieldset>
                     <legend>參考文獻的充分性</legend>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="35" name="number10"value="參考文獻足夠">
+                        <input type="radio" class="radio-input" id="35" name="number10"value="32">
                         <label for="35" class="radio-label">
                             <span class="radio-button"></span>參考文獻足夠
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="36" name="number10"value="參考文獻有一些遺漏(請在下方說明)">
+                        <input type="radio" class="radio-input" id="36" name="number10"value="33">
                         <label for="36" class="radio-label">
                             <span class="radio-button"></span>參考文獻有一些遺漏（請在下方說明）
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="37" name="number10"value="參考文獻不足(請在下方說明)">
+                        <input type="radio" class="radio-input" id="37" name="number10"value="34">
                         <label for="37" class="radio-label">
                             <span class="radio-button"></span>參考文獻不足（請在下方說明）
                         </label>
@@ -352,19 +353,19 @@
                 <fieldset>
                     <legend>評論結果</legend>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="38" name="number11"value="接受">
+                        <input type="radio" class="radio-input" id="38" name="number11"value="35">
                         <label for="38" class="radio-label">
                             <span class="radio-button"></span>接受
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="39" name="number11"value="拒絕">
+                        <input type="radio" class="radio-input" id="39" name="number11"value="36">
                         <label for="39" class="radio-label">
                             <span class="radio-button"></span>拒絕
                         </label>
                     </div>
                     <div class="radio-group">
-                        <input type="radio" class="radio-input" id="40" name="number11"value="修改後接受">
+                        <input type="radio" class="radio-input" id="40" name="number11"value="37">
                         <label for="40" class="radio-label">
                             <span class="radio-button"></span>修改後接受
                         </label>
@@ -373,17 +374,17 @@
             </div>
             <fieldset>
                 <legend>給作者的意見說明</legend>
-                <div id="textareaBox" name="textareaBox" class="textareaBox">
+                <div id="textareaBox" name="textareaBox"input type="text" class="textareaBox">
                     <textarea name="textarea" value="textarea" id="textarea" class="textarea" cols="30" rows="4">
 					
 </textarea>
                 </div>
             </fieldset>
             <div class="button-group">
-                <input class="button buttonB" type="button" value="取消">
-                <input class="button buttonB" type="submit" name='but1' value="送出">
-                <input class="button buttonB" type="button" value="暫存">
-            </div>
+                <input class="button buttonB" id='cancel' name='but3' value="取消"onclick="location.href='ReviewerFrontPage.php'">
+                <input class="button buttonB" id='give' name='but1' value="送出" onclick="abc();">
+                <input class="button buttonB" id='save' name='but2' value="暫存" onclick="def();">
+			</div>
         </div>
     </div>
 </form>
@@ -417,4 +418,16 @@
             hamB.style.transform = "rotate(0deg)";
         }
     })
+	
+	
+    function abc(){
+		document.form1.action="selection.php";
+		document.form1.submit();
+		}
+	function def(){
+		document.getElementById("give").setAttribute("value",1);
+		document.form1.action="selection.php";
+		document.form1.submit();
+		}
+	
 </script>

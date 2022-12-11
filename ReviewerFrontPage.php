@@ -24,7 +24,7 @@ function review()
 
         $link =connect(DB_HOST,DB_USER,DB_PWD,DB_DATABASE)
         or die("無法開啟資料連接!<br/>");
-							$sql = "SELECT * FROM article WHERE state = '評閱中'";
+							$sql = "SELECT * FROM article WHERE state = '6'";
 							
 							if ($result = mysqli_query($link,$sql))
 							{
@@ -39,7 +39,7 @@ function Reviewafterrevision()
 
         $link =connect(DB_HOST,DB_USER,DB_PWD,DB_DATABASE)
         or die("無法開啟資料連接!<br/>");
-							$sql = "SELECT * FROM article WHERE state = '修改後評閱'"; 
+							$sql = "SELECT * FROM article WHERE state = '7'"; 
 							
 							if ($result = mysqli_query($link,$sql))
 							{
