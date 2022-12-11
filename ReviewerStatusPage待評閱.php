@@ -228,7 +228,7 @@
                     <legend>實驗評估</legend>
                     <div class="radio-group">
                         <input type="radio" class="radio-input" id="20" name="number5"value="17">
-                        <label for="21" class="radio-label">
+                        <label for="20" class="radio-label">
                             <span class="radio-button"></span>具有說服力
                         </label>
                     </div>
