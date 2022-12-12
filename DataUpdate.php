@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['identity'])) {
+    echo "<script>alert('請先登入');
+        location.assign('login.html');
+        </script>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,15 +43,14 @@
         </div>
     </header>
     <?php
-             session_start();
+            //  session_start();
 
                         require_once("cfg.php");
                         require_once("sqlLink.php");
     
                             $link =connect(DB_HOST,DB_USER,DB_PWD,DB_DATABASE)
                             or die("無法開啟資料連接!<br/>");
-                            $id=0;
-
+                            $id=$_SESSION['userid'];
 
                         $query = "SELECT * FROM user  WHERE `id`='$id'";
 

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +13,17 @@
     <link rel="stylesheet" href="css/RWD.css">
     <link rel="stylesheet" href="css/SubmissionQuery.css">
     <link rel="stylesheet" href="css/footer.css">
+
+    <?php
+        $pageid = 1;
+        if (!isset($_SESSION['identity']) OR $_SESSION['identity'] != $pageid ) {
+            echo "<script>alert('請以投稿者帳號登入');
+            location.assign('login.html');
+            </script>";
+            //header("Location: login.html");
+        }
+    ?>
+
     <title>投稿狀態查詢</title>
 </head>
 
@@ -52,7 +67,8 @@
                         $link =connect(DB_HOST,DB_USER,DB_PWD,DB_DATABASE)
                         or die("無法開啟資料連接!<br/>");
 
-                        $query = "SELECT * FROM article  ";
+                        $userid = $_SESSION["userid"];
+                        $query = "SELECT * FROM article WHERE id='$userid'";
 
                         $query_run = mysqli_query($link,$query);
                         
@@ -60,13 +76,28 @@
                         {
                             foreach($query_run as $row)
                             {
+                                switch ($row['state']) {
+                                    case 1:
+                                        $state = "尚未分派";
+                                        break;
+                                    case 2:
+                                        $state = "分派中";
+                                        break;
+                                    case 3:
+                                    case 4:
+                                        $state = "審稿中";
+                                        break;
+                                    case 5:
+                                        $state = "審稿完畢";
+                                        break;
+                                }
                     ?>
                     <tr>
                         <td><span><?php echo $row['writer']; ?></span></td>
                         <td><?php echo $row['articlename']; ?></td>
                         <td><span><?php echo $row['category']; ?></span></td>
-                        <td><a href="Download.php?filename=下載.docx"><span><?php echo $row["articlename"]; ?></span></a></td>
-                        <td><span><?php echo $row['state']; ?></span></td>               
+                        <td><a href="Download.php?filename=<?php echo $row["fileName"];?>"><span><?php echo $row["articlename"]; ?></span></a></td>
+                        <td><span><?php echo $state; ?></span></td>               
                     </tr> 
                  <?php
 				     }

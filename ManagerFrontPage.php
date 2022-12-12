@@ -1,6 +1,13 @@
 <?php
 session_start();
 
+$pageid = 0;
+if (!isset($_SESSION['identity']) OR $_SESSION['identity'] != $pageid ) {
+    echo "<script>alert('請以管理者帳號登入');
+            location.assign('login.html');
+            </script>";
+}
+
 require_once("cfg.php");
 require_once("sqlLink.php");
 require_once("pageSwitch.php");
@@ -30,7 +37,7 @@ require_once("pageSwitch.php");
                 <li><a href="FrontPage.html" class="action">關於論文</a></li>
                 <li><a href="PostPage.php">投稿專區</a></li>
                 <li><a href="SubmissionQuery.php">投稿狀態查詢</a></li>
-                <li><a href="ReviewerFrontPage.php">審稿專區</a></li>
+                <li><a href="ReviewerFrontPage.html">審稿專區</a></li>
                 <li><a href="login.html"><img src="img/user.png" alt="" style="width: 18px;height: 18px;"></a></li>
                 <li><a href="DataUpdate.php"><img src="img/settings.png" alt="" style="width: 18px;height: 18px;"></a>
                 </li>
@@ -44,11 +51,7 @@ require_once("pageSwitch.php");
     </header>
 
     <?php
-    //偵測登入
-    /*if (!isset($_SESSION['manager'])) {
-        header("Location: unlogin.php");
-    }*/
-    SwitchPage("m.php");
+        SwitchPage("m.php");
     ?>
 
     

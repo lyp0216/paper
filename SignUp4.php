@@ -1,8 +1,14 @@
 <?php
+	use PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\Exception;
+
+	require 'PHPMailer/src/Exception.php';
+	require 'PHPMailer/src/PHPMailer.php';
+	require 'PHPMailer/src/SMTP.php';
 			session_start();
 
 			if(isset($_POST["signBut"])){  
-			$id=$_POST["mail"];
+			//$id=$_POST["mail"];
 			$name=$_POST["name"];
 			$email=$_POST["mail"];
 			$pwd=$_POST["password"];
@@ -25,7 +31,8 @@
 
 
 				
-				require("./phpmailer/class.phpmailer.php");
+				// require("./phpmailer/class.phpmailer.php");
+				
 					
 				$mail= new PHPMailer();                    //建立新物件
 				$mail->IsSMTP();                           //設定使用SMTP方式寄信
@@ -34,10 +41,10 @@
 				$mail->Host = "smtp.gmail.com";            //Gamil的SMTP主機
 				$mail->Port = "465";                       //Gamil的SMTP主機的埠號(Gmail為465)。
 				$mail->CharSet = "utf-8";                  //郵件編碼
-				$mail->Username = "euny900216@gmail.com";  //Gamil帳號
-				$mail->Password ='iekngpdiezfiuzqp';       //Gmail密碼
-				$mail->From = "euny900216@gmail.com";     //寄件者信箱
-				$mail->FromName = "Lu";                   //寄件者姓名
+				$mail->Username = "10810315@gm.chihlee.edu.tw";  //Gamil帳號
+				$mail->Password ='nfvosrdrkdxctild'; //nfvosrdrkdxctild      //Gmail密碼
+				$mail->From = "chen885186@gmail.com";     //寄件者信箱
+				$mail->FromName = "Chen";                   //寄件者姓名
 				$mail->Subject ="帳號開通成功";            //郵件標題
 				$mail->Body = "親愛的".$name."您好：<br/>
 				您在致理投稿網站的帳號及密碼如下：<br />".				
@@ -53,7 +60,7 @@
 				$mail->IsHTML(true);                      //郵件內容為html
 				$mail->AddAddress("$email");            //收件者郵件及名稱
 				if(!$mail->Send()){
-					echo "<script>alert('寄信失敗!')</script>";   
+					echo "<script>alert('寄信失敗!')</script>"; 
 				}
 					else{
 						echo "<script>alert('查看信件!')</script>";
@@ -67,13 +74,13 @@
 			require_once("cfg.php");
 			require_once("sqlLink.php");
 
-			$link =connect(DB_HOST,DB_USER,DB_PWD,DB_DATABASE)
+			$link = connect(DB_HOST,DB_USER,DB_PWD,DB_DATABASE)
 				or die("無法開啟資料連接!<br/>");
-			$sql="INSERT INTO user(id,name,mail,pwd,tel)value ('$id','$name','$email','$pwd','$tel')";
-			$result=mysqli_query($link,$sql);
-			if (mysqli_affected_rows($link)>0) {
+			$sql = "INSERT INTO `user`(`pwd`, `name`, `mail`, `tel`, `identity`) VALUES  ('$pwd', '$name', '$email', '$tel', '1')";
+			$result = mysqli_query($link,$sql);
+			if (mysqli_affected_rows($link) > 0) {
 
-				$id1= mysqli_insert_id ($link);
+				$id1 = mysqli_insert_id ($link);
 				header("Refresh:2; url=login.html");  
 				}
 				elseif(mysqli_affected_rows($link)==0) {

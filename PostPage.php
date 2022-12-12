@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +13,17 @@
     <link rel="stylesheet" href="css/RWD.css">
     <link rel="stylesheet" href="css/PostPage.css">
     <link rel="stylesheet" href="css/footer.css">
+
+    <?php
+        $pageid = 1;
+        if (!isset($_SESSION['identity']) OR $_SESSION['identity'] != $pageid ) {
+            echo "<script>alert('請以投稿者帳號登入');
+            location.assign('login.html');
+            </script>";
+            //header("Location: login.html");
+        }
+    ?>
+
     <title>投稿頁面</title>
 </head>
 
@@ -61,7 +76,6 @@
                             <option value="教育類">教育類</option>
                             <option value="醫學類">醫學類</option>
                             <option value="工程技術類">工程技術類</option>
-                            <option value="藝術類">藝術類</option>
                         </select>
                     </div>
                 </div>

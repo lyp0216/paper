@@ -16,7 +16,6 @@ if ($mail != "") {
         echo 0;
     }
     else {
-        //
         echo 1;
         SendMail($mail, $articleID);
     }
@@ -64,7 +63,7 @@ function AccountHandle($mail) {
 function SendMail($sendMail, $articleID) {
     
     $link = connect(DB_HOST, DB_USER, DB_PWD, DB_DATABASE);
-    $sqlcmd = "SELECT `articleID`, `articlename`, `abstract`, `category` FROM `article` WHERE `articleID`='$articleID'";
+    $sqlcmd = "SELECT `articleID`, `articlename`, `abstract`, `category`, `fileName` FROM `article` WHERE `articleID`='$articleID'";
     $result = mysqli_query($link, $sqlcmd);
     $articleInfo = null;
 
@@ -84,15 +83,17 @@ function SendMail($sendMail, $articleID) {
 
 
     //網址 須隨者本地資料位置更改
-    $url_downloadFile = "";
-    $url_agree = "http://localhost:8080/paper/replyN.php?value=$number&&reply=1";
-    $url_reject = "http://localhost:8080/paper/replyN.php?value=$number&&reply=2";
+    $http = "http";
+    $IP = $_SERVER['HTTP_HOST'];
+
+    $url_downloadFile = $http . "://" . $IP . "/paper/Download.php?filename=" . $articleInfo["fileName"];
+    $url_agree = $http . "://" . $IP . "/paper/replyN.php?value=$number&&reply=1";
+    $url_reject = $http . "://" . $IP . "/paper/replyN.php?value=$number&&reply=2";
 
     //帳號密碼
     $acStr = AccountHandle($sendMail);
 
     //信件資料
-    $url_download = "http://localhost:8080/paper/123.docx";
     $to = $sendMail;
     $subject = "致理e化投稿網 論文審稿邀請: " . $articleInfo['category']; //主旨
     $message = "
@@ -117,7 +118,7 @@ function SendMail($sendMail, $articleID) {
     
     <div>如要下載並閱讀此文章的PDF,請點擊此連結:</div>
     
-    <div><a href='" . $url_download . "'>下載文章</a></div><br>
+    <div><a href='" . $url_downloadFile . "'>下載文章</a></div><br>
     
     <div>若是您想要審閱此篇文章,請點擊此連結:</div>
     

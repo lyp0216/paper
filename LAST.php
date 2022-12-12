@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+require_once("cfg.php");
+require_once("sqlLink.php");
+
 if (isset($_GET["value"])) {
     
     $aID = $_GET["value"];
@@ -18,8 +22,153 @@ if (isset($_GET["value"])) {
     }
 	$_SESSION['articleID'] = $articleID;
 
-    $sql = "";
-    
+    $sql = "SELECT `Does it fit the theme?`, `Does the paper have reference value`, `Essay length`, `The quality of the content of the paper`, `Experimental evaluation`, `technical correctness`, `The originality of the paper`, `the completeness of the thesis`, `Paper illustration quality`, `sufficiency of references`, `Comment result`, `Notes to the author` FROM `selection` WHERE `articleID` = '$articleID'";
+    $link = connect(DB_HOST, DB_USER, DB_PWD, DB_DATABASE);
+	$result = mysqli_query($link, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        $commentDatas = mysqli_fetch_assoc($result);            
+    }
+
+    mysqli_close($link);
+
+    function switchInfo($infoNum) {
+        switch ($infoNum) {
+            //主題
+            case '1':
+                return "非常符合";
+                break;
+            case '2':
+                return "符合";
+                break;
+            case '3':
+                return "普通";
+                break;
+            case '4':
+                return "不太符合";
+                break;
+            case '5':
+                return "不符合";
+                break;
+            //參考價值
+            case '6':
+                return "對廣大讀者具有高參考價值";
+                break;
+            case '7':
+                return "對有限讀者有高參考價值";
+                break;
+            case '8':
+                return "對廣大讀者有邊際參考價值";
+                break;
+            case '9':
+                return "對有限讀者有邊際參考價值";
+                break;
+            case '10':
+                return "無參考價值";
+                break;
+            //論文長度
+            case '11':
+                return "合適的";
+                break;
+            case '12':
+                return "需延長";
+                break;
+            case '13':
+                return "需縮短";
+                break;
+            //質量
+            case '14':
+                return "出色的";
+                break;
+            case '15':
+                return "一般";
+                break;
+            case '16':
+                return "較差的";
+                break;
+            //實驗評估
+            case '17':
+                return "具有說服力";
+                break;
+            case '18':
+                return "有限但令人信服";
+                break;
+            case '19':
+                return "無說服力的";
+                break;
+            //技術正確性
+            case '20':
+                return "正確的";
+                break;
+            case '21':
+                return "部分正確";
+                break;
+            case '22':
+                return "不正確";
+                break;
+            //獨創性
+            case '23':
+                return "出色的";
+                break;
+            case '24':
+                return "一般";
+                break;
+            case '25':
+                return "較差的";
+                break;
+            //完整度
+            case '26':
+                return "出色的";
+                break;
+            case '27':
+                return "一般";
+                break;
+            case '28':
+                return "較差的";
+                break;
+            //插圖質量
+            case '29':
+                return "出色的";
+                break;
+            case '30':
+                return "一般";
+                break;
+            case '31':
+                return "較差的";
+                break;
+            //文獻充分性
+            case '32':
+                return "參考文獻足夠";
+                break;
+            case '33':
+                return "參考文獻有一些遺漏";
+                break;
+            case '34':
+                return "參考文獻不足";
+                break;
+            //結果
+            case '35':
+                return "接受";
+                break;
+            case '37':
+                return "拒絕";
+                break;
+            case '38':
+                return "修改後接受";
+                break;
+            
+            default:
+                if ($infoNum == "") {
+                    $infoNum = "無建議";
+                }
+                return $infoNum;
+                break;
+        }
+    }
+
+    foreach($commentDatas as $infoNum) {
+        $infoStr[] = switchInfo($infoNum);
+    } 
 }
 ?>
 
@@ -35,6 +184,7 @@ if (isset($_GET["value"])) {
         <link rel="stylesheet" href="css/footer.css">
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script type="text/javascript" src="https://unpkg.com/sweetalert2@7.0.7/dist/sweetalert2.all.js"></script>
+        <script></script>
         <title>管理者</title>
     </head>
     <body>
@@ -75,73 +225,43 @@ if (isset($_GET["value"])) {
                     <div class="textareaDiv" id="textareaDiv">
                         <p>文章摘要：<span><?php echo $summary; ?></span></p>
                     </div>
-                    
-                    <!-- <div>
-                        <table>
-                            <tr>
-                                <th>是否符合主題</th>
-                                <th>是否具有參考價值</th>
-                                <th>論文長度</th>
-                                <th>論文內容的質量</th>
-                                <th>實驗評估</th>
-                                <th>技術正確性</th>
-                                <th>論文獨創性</th>
-                                <th>論文的完整度</th>
-                                <th>論文插圖質量</th>
-                                <th>參考文獻的充分性</th>
-                            </tr>
-                            <tr>
-                                <td>是</td>
-                                <td>是</td>
-                                <td>是</td>
-                                <td>是</td>
-                                <td>是</td>
-                                <td>是</td>
-                                <td>是</td>
-                                <td>是</td>
-                                <td>是</td>
-                                <td>是</td>
-                            </tr>
-                        </table>
-                                                                
-                    </div> -->
 
                     <div class="textDiv" id="textDiv">
-                        <p>是符合主題：<span>測試</span></p>
+                        <p>是否符合主題：<span><?php echo $infoStr[0];?></span></p>
                     </div>
                     <div class="textDiv" id="textDiv">
-                        <p>是符具有參考價值：<span>測試</span></p>
+                        <p>是否具有參考價值：<span><?php echo $infoStr[1];?></span></p>
                     </div>
                     <div class="textDiv" id="textDiv">
-                        <p>論文長度：<span>測試</span></p>
+                        <p>論文長度：<span><?php echo $infoStr[2];?></span></p>
                     </div>
                     <div class="textDiv" id="textDiv">
-                        <p>論文內容質量：<span>測試</span></p>
+                        <p>論文內容質量：<span><?php echo $infoStr[3];?></span></p>
                     </div>
                     <div class="textDiv" id="textDiv">
-                        <p>實驗評估：<span>測試</span></p>
+                        <p>實驗評估：<span><?php echo $infoStr[4];?></span></p>
                     </div>
                     <div class="textDiv" id="textDiv">
-                        <p>技術正確性：<span>測試</span></p>
+                        <p>技術正確性：<span><?php echo $infoStr[5];?></span></p>
                     </div>
                     <div class="textDiv" id="textDiv">
-                        <p>論文獨創性：<span>測試</span></p>
+                        <p>論文獨創性：<span><?php echo $infoStr[6];?></span></p>
                     </div>
                     <div class="textDiv" id="textDiv">
-                        <p>論文的完整度：<span>測試</span></p>
+                        <p>論文的完整度：<span><?php echo $infoStr[7];?></span></p>
                     </div>
                     <div class="textDiv" id="textDiv">
-                        <p>論文插圖質量：<span>測試</span></p>
+                        <p>論文插圖質量：<span><?php echo $infoStr[8];?></span></p>
                     </div>
                     <div class="textDiv" id="textDiv">
-                        <p>參考文獻充分性：<span>測試</span></p>
+                        <p>參考文獻充分性：<span><?php echo $infoStr[9];?></span></p>
                     </div>
                     <div class="textDiv" id="textDiv">
-                        <p>評論結果：<span>通過</span></p>
+                        <p>評論結果：<span><?php echo $infoStr[10];?></span></p>
                     </div>
                     <div class="textareaDiv" id="textareaDiv">
                         <p>評審建議：</p>
-                        <div class="a"><textarea name="suggest" id="suggest" cols="30" rows="5"><?php echo $comments; ?></textarea></div>
+                        <div class="a"><textarea name="suggest" id="suggest" cols="30" rows="5"><?php echo $infoStr[11]; ?></textarea></div>
                         
                     </div>
 

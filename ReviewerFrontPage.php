@@ -2,7 +2,14 @@
 <html lang="en">
 
 <?php
-                            
+session_start();
+$pageid = 2;
+if (!isset($_SESSION['identity']) OR $_SESSION['identity'] != $pageid ) {
+    echo "<script>alert('請以審稿者帳號登入');
+            location.assign('login.html');
+            </script>";
+}
+
 function pendingreview()
 {   require_once("cfg.php");
     require_once("sqlLink.php");

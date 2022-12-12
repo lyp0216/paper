@@ -4,6 +4,9 @@ session_start();
 //     header("Location: login.html"); 
 // }
 
+if (!isset($_GET["value"])) {
+    header("Location: ManagerFrontPage.php"); 
+}
 ?>
 
 <!DOCTYPE html>
@@ -88,7 +91,12 @@ if (isset($_GET["value"])) {
 	$category = $datas[$datasNum]['category'];
     $summary = $datas[$datasNum]['abstract'];
 	$_SESSION['articleID'] = $articleID;
-	
+
+	if ($datas[$datasNum]['state'] != 1) {
+        header("Location: ManagerFrontPage.php"); 
+    }
+
+    unset($_SESSION['assign']);
 ?>
     
             <form method="post">

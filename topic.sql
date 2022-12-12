@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `article` (
   `id` int(100) NOT NULL,
-  `articleID` tinyint(100) NOT NULL,
+  `articleID` int(100) NOT NULL,
   `writer` varchar(100) NOT NULL,
   `abstract` varchar(100) NOT NULL,
   `fileName` varchar(100) NOT NULL,
@@ -45,9 +45,6 @@ CREATE TABLE `article` (
 -- 傾印資料表的資料 `article`
 --
 
-INSERT INTO `article` (`id`, `articleID`, `writer`, `abstract`, `fileName`, `articlename`, `category`, `comments`, `state`, `invitationdate`, `deadline`) VALUES
-(1001, 111, 'Wang, Xiao-Ming', 'This is abstract.', '', '深度學習訓練', '教育類', '', 4, '', '2022-12-24 12:00:00');
-
 -- --------------------------------------------------------
 
 --
@@ -55,7 +52,7 @@ INSERT INTO `article` (`id`, `articleID`, `writer`, `abstract`, `fileName`, `art
 --
 
 CREATE TABLE `assigning` (
-  `articleID` tinyint(100) NOT NULL,
+  `articleID` int(100) NOT NULL,
   `value` varchar(100) NOT NULL,
   `mail` varchar(100) NOT NULL,
   `reply` varchar(100) NOT NULL
@@ -65,8 +62,7 @@ CREATE TABLE `assigning` (
 -- 傾印資料表的資料 `assigning`
 --
 
-INSERT INTO `assigning` (`articleID`, `value`, `mail`, `reply`) VALUES
-(111, 'OaJajozlBL', 'chen885186@gmail.com', '1');
+
 
 -- --------------------------------------------------------
 
@@ -75,7 +71,7 @@ INSERT INTO `assigning` (`articleID`, `value`, `mail`, `reply`) VALUES
 --
 
 CREATE TABLE `selection` (
-  `articleID` tinyint(100) NOT NULL,
+  `articleID` int(100) NOT NULL,
   `Manuscript Review Status` varchar(100) DEFAULT NULL,
   `Does it fit the theme?` varchar(100) DEFAULT NULL,
   `Does the paper have reference value` varchar(100) DEFAULT NULL,
@@ -96,8 +92,7 @@ CREATE TABLE `selection` (
 -- 傾印資料表的資料 `selection`
 --
 
-INSERT INTO `selection` (`articleID`, `Manuscript Review Status`, `Does it fit the theme?`, `Does the paper have reference value`, `Essay length`, `The quality of the content of the paper`, `Experimental evaluation`, `technical correctness`, `The originality of the paper`, `the completeness of the thesis`, `Paper illustration quality`, `sufficiency of references`, `Comment result`, `Notes to the author`, `userid`) VALUES
-(111, '37', '3', '7', '12', '15', '18', '21', '24', '27', '30', '33', '37', '					\r\n', 1001);
+
 
 -- --------------------------------------------------------
 
@@ -118,9 +113,7 @@ CREATE TABLE `user` (
 -- 傾印資料表的資料 `user`
 --
 
-INSERT INTO `user` (`id`, `pwd`, `name`, `mail`, `tel`, `identity`) VALUES
-(1001, 'asd123', 'Wang Xiao Ming', 'chen0081110921@gmail.com', '0912345678', '1'),
-(1003, 'R7BW9ijdApzQ', '', 'chen885186@gmail.com', '', '2');
+
 
 --
 -- 已傾印資料表的索引
@@ -162,13 +155,13 @@ ALTER TABLE `user`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `article`
 --
 ALTER TABLE `article`
-  MODIFY `articleID` tinyint(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `articleID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1007;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- 已傾印資料表的限制式

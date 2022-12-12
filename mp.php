@@ -3,8 +3,12 @@
 function selectInfo($state) {
     
     //$sql = "SELECT `articleID`, `articlename`, `summary`, `category`, `id`, `name`, `state`, `deadline` FROM `user` INNER JOIN `article` ON user.id = article.userId WHERE `state`='$state'";
-    $sql = "SELECT article.id, `name`, `articleID`, `writer`, `abstract`, `filee`, `articlename`, `category`, `comments`, `state`, `invitationdate`, `deadline` FROM `article` INNER JOIN `user` ON article.id = user.id WHERE `state`='$state'";
+    $sql = "SELECT article.id, `name`, `articleID`, `writer`, `abstract`, `articlename`, `category`, `comments`, `state`, `invitationdate`, `deadline` FROM `article` INNER JOIN `user` ON article.id = user.id WHERE `state`='$state'";
 
+    if($state == 3) {
+        $sql = "SELECT article.id, `name`, `articleID`, `writer`, `abstract`, `articlename`, `category`, `comments`, `state`, `invitationdate`, `deadline` FROM `article` INNER JOIN `user` ON article.id = user.id WHERE `state`='3' OR `state`='6'";
+    }
+    
     $link = connect(DB_HOST, DB_USER, DB_PWD, DB_DATABASE);
 	$result = mysqli_query($link, $sql);
     mysqli_close($link);
@@ -26,12 +30,7 @@ function showInfo($state) {
     if (isset($datas)) {
 
         if ($state == 1) {
-            $i=1;
             $_SESSION['assign'] = $datas;
-            $btnTitle = "<th></th>";
-            $btnStr = "<td><input type='button' value='分派' onClick=location='assign.php?value='></td>";
-            $localNum = 75;
-
 ?>
                 <tr>
                     <th>文章編號</th>
@@ -44,19 +43,16 @@ function showInfo($state) {
 <?php
 
             foreach ($datas as $key => $row) {
-                $btn = substr_replace($btnStr, $i, $localNum, 0);
 ?>
-                    <tr>
-                        <td><span id=''><?php echo $row["articleID"];?></span></td>
-                        <td><?php echo $row["articlename"]?></td>
-                        <td><?php echo $row["name"]?></td>
-                        <td><?php echo $row["category"]?></td>
-                        <td><?php echo $row["deadline"]?></td>
-                        <td><button type="button" id="<?php echo "assign_" . $key;?>" value="<?php echo $key;?>">分派</button></td>
-                    </tr>
+                <tr>
+                    <td><span id=''><?php echo $row["articleID"];?></span></td>
+                    <td><?php echo $row["articlename"]?></td>
+                    <td><?php echo $row["writer"]?></td>
+                    <td><?php echo $row["category"]?></td>
+                    <td><?php echo $row["deadline"]?></td>
+                    <td><button type="button" id="<?php echo "assign_" . $key;?>" value="<?php echo $key;?>">分派</button></td>
+                </tr>
 <?php
-    
-                $i++;
             }
         }
         elseif ($state == 4) {

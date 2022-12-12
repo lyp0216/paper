@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/RWD.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/footer.css">
-    <title>登入頁面</title>
+    <title>會員登入</title>
 </head>
 
 <body>
@@ -59,7 +59,53 @@
         TEL：(02)2257-6167 │ (02)2257-6168 │ FAX：(02)2258-3710
     </footer>
 </body>
+<script>
+    var mailText = document.getElementById("mail");
+    var pwdText = document.getElementById("pwd");
 
+    mailText.addEventListener("keyup", function () {
+
+    });
+
+    var submitBtn = document.getElementById("login_button");
+
+    submitBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+
+        if (mailText.value == "" || pwdText.value == "") {
+            alert("請輸入帳號密碼!");
+        }
+        else {
+            var xmlhttpB = new XMLHttpRequest();
+            xmlhttpB.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    if (xmlhttpB.responseText >= 0) {
+                        switch (xmlhttpB.responseText) {
+                        //0=管理 1=投稿 2=審稿 3=投稿+審稿
+                            case "0":
+                                location.assign("ManagerFrontPage.php");
+                                break;
+                            case "1":
+                                location.assign("PostPage.php");
+                                break;
+                            case "2":
+                                location.assign("ReviewerFrontPage.php");
+                                break;
+                            case "3":
+                                location.assign("FrontPage.html");
+                                break;
+                        }
+                    }
+                    else {
+                        alert("帳號密碼錯誤!");
+                    }
+                }
+            };
+            xmlhttpB.open("GET", "loginHandle.php?mail=" + mailText.value + "&pwd=" + pwdText.value, true);
+            xmlhttpB.send();
+        }
+    });
+</script>
 </html>
 <script>
     let hb = document.getElementById("hamburger");
