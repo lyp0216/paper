@@ -41,9 +41,9 @@
 				$mail->Host = "smtp.gmail.com";            //Gamil的SMTP主機
 				$mail->Port = "465";                       //Gamil的SMTP主機的埠號(Gmail為465)。
 				$mail->CharSet = "utf-8";                  //郵件編碼
-				$mail->Username = "10810315@gm.chihlee.edu.tw";  //Gamil帳號
-				$mail->Password ='nfvosrdrkdxctild'; //nfvosrdrkdxctild      //Gmail密碼
-				$mail->From = "chen885186@gmail.com";     //寄件者信箱
+				$mail->Username = "chen0081110921@gmail.com";  //Gamil帳號
+				$mail->Password ='chuzrlkzeveutzww'; //ywwjnvwpsekdrboy      //Gmail密碼
+				$mail->From = "chen0081110921@gmail.com";     //寄件者信箱
 				$mail->FromName = "Chen";                   //寄件者姓名
 				$mail->Subject ="帳號開通成功";            //郵件標題
 				$mail->Body = "親愛的".$name."您好：<br/>
@@ -60,11 +60,11 @@
 				$mail->IsHTML(true);                      //郵件內容為html
 				$mail->AddAddress("$email");            //收件者郵件及名稱
 				if(!$mail->Send()){
+					echo "Error:".$mail->ErrorInfo;
 					echo "<script>alert('寄信失敗!')</script>"; 
 				}
-					else{
-						echo "<script>alert('查看信件!')</script>";
-					}
+				else{
+					
 					
 
 
@@ -91,6 +91,9 @@
 					echo "其他錯誤";
 				}
 				mysqli_close($link); 
+				
+				echo "<script>alert('查看信件!')</script>";
+				}
 }
 
 

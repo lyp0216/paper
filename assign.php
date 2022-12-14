@@ -93,10 +93,11 @@ if (isset($_GET["value"])) {
 	$_SESSION['articleID'] = $articleID;
 
 	if ($datas[$datasNum]['state'] != 1) {
+        
         header("Location: ManagerFrontPage.php"); 
     }
-
-    unset($_SESSION['assign']);
+    unset($_GET["value"]);
+    
 ?>
     
             <form method="post">

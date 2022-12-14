@@ -1,5 +1,5 @@
 <?php
-function replyHandle($number, $reply) {
+function replyHandle($number, $reply, $pwd) {
 
     require_once("cfg.php");
 	require_once("sqlLink.php");
@@ -28,10 +28,17 @@ function replyHandle($number, $reply) {
                 if ($reply == "1") {
                     $sqlcmd = "UPDATE `article` SET `state`='3' WHERE `articleID`='$articleID'";
                     if (mysqli_query($link, $sqlcmd)) {
+                        $sqlcmd = "SELECT `id`, `pwd`, `name`, `mail`, `tel`, `identity` FROM `user` WHERE `mail` = '$mail'";
+                        $result = mysqli_query($link, $sqlcmd);
+                        if (mysqli_num_rows($result) == 0) {
+                            $sqlcmd = "INSERT INTO `user`(`pwd`, `mail`, `identity`) VALUES ('$pwd','$mail','2')";
+                            if (mysqli_query($link, $sqlcmd)) {
 ?>
-                        <div>感謝您接受審稿</div>
-                        <div><a href="login.html">前往登入</a></div>
+                            <div>感謝您接受審稿</div>
+                            <div><a href="login.html">前往登入</a></div>
 <?php
+                            }
+                        }
                     }
                 }
                 elseif ($reply == "2") {
@@ -51,17 +58,18 @@ function replyHandle($number, $reply) {
             header("Location: login.html"); 
     }
     else {
-        echo "什麼都沒有";
+        echo "";
     }
     mysqli_close($link);
 }
 
-if (isset($_GET["value"]) && isset($_GET["reply"]) && $_GET["reply"]==1 OR $_GET["reply"]==2) {
+if (isset($_GET["value"]) && isset($_GET["p"]) && isset($_GET["reply"]) && $_GET["reply"] == 1 OR $_GET["reply"] == 2) {
 
     $number = $_GET["value"];
+    $pwd = $_GET["p"];
     $reply = $_GET["reply"];
 
-    replyHandle($number, $reply);
+    replyHandle($number, $reply, $pwd);
 }
 else {
     header("Location: login.html"); 

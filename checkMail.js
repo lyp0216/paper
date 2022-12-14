@@ -49,7 +49,7 @@ function assign() {
                     location.assign("ManagerFrontPage.php");
                 }
                 else {
-                    document.getElementById("stateTxt").innerHTML = "此學士已拒絕過評閱這篇文章!";
+                    document.getElementById("stateTxt").innerHTML = xmlhttpB.responseText;
                 }
             }
             else {
