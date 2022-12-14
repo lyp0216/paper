@@ -58,20 +58,20 @@ session_start();
                 <div>
                     <p class="textP">作者</p>
                     <div name="workNameBox">
-                        <textarea name="writer" id="writer" cols="30" rows="2"></textarea>
+                        <textarea name="writer" id="writer" cols="30" rows="2" required></textarea>
                         <p class="writerP" id="writerP"><span>多位作者間用&#34;;&#34;進行隔開</span></p>
                     </div>
                 </div>
                 <div>
                     <p class="textP">作品名稱</p>
                     <div name="workNameBox">
-                        <textarea name="workName" id="workName" cols="30" rows="2"></textarea>
+                        <textarea name="workName" id="workName" cols="30" rows="2" required></textarea>
                     </div>
                 </div>
                 <div>
                     <p class="textP">稿件類別</p>
                     <div>
-                        <select name="postSelect" id="postSelect" class="postSelect">
+                        <select name="postSelect" id="postSelect" class="postSelect" required>
                             <option value="商業類">商業類</option>
                             <option value="教育類">教育類</option>
                             <option value="醫學類">醫學類</option>
@@ -91,7 +91,7 @@ session_start();
             <fieldset>
                 <legend>檔案上傳</legend>
                 <div class="dw-wrap">           
-                        <input class="fileUpload" type="file" name="file" accept=".doc,.docx,.pdf"><br/>
+                        <input class="fileUpload" type="file" name="file" accept=".doc,.docx,.pdf" required><br/>
                 </form>
                 </div>
             </fieldset>
