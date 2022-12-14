@@ -96,7 +96,7 @@ session_start();
                         <td><span><?php echo $row['writer']; ?></span></td>
                         <td><?php echo $row['articlename']; ?></td>
                         <td><span><?php echo $row['category']; ?></span></td>
-                        <td><a href="Download.php?filename=<?php echo $row["fileName"];?>"><span><?php echo $row["articlename"]; ?></span></a></td>
+                        <td><a href="Download.php?filename=<?php echo $row["fileName"];?>"><span><?php echo  $row["fileName"]; ?></span></a></td>
                         <td><span><?php echo $state; ?></span></td>               
                     </tr> 
                  <?php
