@@ -19,11 +19,13 @@ if(isset($_POST["button1"])){
 
 		if (copy($_FILES["file"]["tmp_name"], $_FILES["file"]["name"])) {
 			$fileName = $_FILES["file"]["name"];
-			echo "上傳檔案成功<br/>";
+			echo "<script>alert('上傳檔案成功!')</script>";
 			unlink($_FILES["file"]["tmp_name"]);
+			header("Refresh:2; url=SubmissionQuery.php");
 		}
 		else {
-			echo"檔案上傳失敗<br/>";
+		echo "<script>alert('檔案上傳失敗!')</script>";
+		header("Refresh:2; url=PostPage.php");
 		}
 	}
 
