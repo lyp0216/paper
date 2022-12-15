@@ -83,7 +83,7 @@ session_start();
                     <p class="textP">內容摘要</p>
                     <div>
                         <textarea name="abstract" id="abstract" style="height: 75px;resize: vertical;" cols="30"
-                            rows="2"></textarea>
+                            rows="2" required></textarea>
                     </div>
                 </div>
             
