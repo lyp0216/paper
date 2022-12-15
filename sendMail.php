@@ -97,7 +97,7 @@ function SendMail($sendMail, $articleID, $pwd, $acStr) {
 
     $url_downloadFile = $http . "://" . $IP . "/paper/Download.php?filename=" . $articleInfo["fileName"];
     $url_agree = $http . "://" . $IP . "/paper/replyN.php?value=$number&p=$pwd&reply=1";
-    $url_reject = $http . "://" . $IP . "/paper/replyN.php?value=$number&reply=2";
+    $url_reject = $http . "://" . $IP . "/paper/replyN.php?value=$number&p=$pwd&reply=2";
 
     //信件資料
     // $to = $sendMail;
