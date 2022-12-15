@@ -77,6 +77,7 @@
             <fieldset>
                 <legend>投稿者資訊</legend>
                 <div style="display:flex;">
+					
 					<div class="text"><p class="textP">稿件編號：</p></div><div class="textPp "><span style="border-bottom: 1px #cccccc solid;"><?php
 						echo"$row[1]";
 					?></span></div>
@@ -98,7 +99,7 @@
 				</div>
 				<div style="display:flex;">
 					<div class="text"><p class="textP">作品摘要：</p></div><div class="textPp "><textarea name="text" id="text" cols="30" rows="10"><?php
-						echo"$row[7]";
+						echo "$row[7]";
 						?></textarea></div>
 				</div>
 				
@@ -106,11 +107,24 @@
 
             </fieldset>
             <fieldset>
+			<?php 
+						  $link = connect(DB_HOST, DB_USER, DB_PWD, DB_DATABASE);
+                          $sqlcmd = "SELECT `articleID`, `articlename`, `abstract`, `category`, `fileName` FROM `article` WHERE `articleID`='$id'";
+                          $result = mysqli_query($link, $sqlcmd);
+                          $articleInfo = null;
+						
+						 if (mysqli_num_rows($result) > 0) {
+                           $articleInfo = mysqli_fetch_assoc($result);
+    				         }
+							 
+							 $IP = $_SERVER['HTTP_HOST'];
+	                       $url_downloadFile = "http://" . $IP . "/paper/Download.php?filename=" . $articleInfo["fileName"];
+						   
+						?>
                 <legend>檔案下載</legend>
                 <li class="dw-wrap">
-                    <a href="$row[1]/download/" class="dw-link dw-item">
-                        <div class="dw-name">
-						<?php echo"$row[5]";?>
+                    <a href="<?php echo $url_downloadFile;?>" class="dw-link dw-item">
+                        <div class="dw-name">檔案下載
                         </div>
                         <div class="dw-image"><img class="list-image-thumb" src="img/dw.png" alt="down"></div>
                     </a>
@@ -228,7 +242,7 @@
                     <legend>實驗評估</legend>
                     <div class="radio-group">
                         <input type="radio" class="radio-input" id="20" name="number5"value="17">
-                        <label for="21" class="radio-label">
+                        <label for="20" class="radio-label">
                             <span class="radio-button"></span>具有說服力
                         </label>
                     </div>
@@ -429,5 +443,8 @@
 		document.form1.action="selection.php";
 		document.form1.submit();
 		}
+	function download(){
+		
+	}
 	
 </script>

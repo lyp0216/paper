@@ -123,11 +123,24 @@
 
             </fieldset>
             <fieldset>
+                <?php 
+						  $link = connect(DB_HOST, DB_USER, DB_PWD, DB_DATABASE);
+                          $sqlcmd = "SELECT `articleID`, `articlename`, `abstract`, `category`, `fileName` FROM `article` WHERE `articleID`='$id'";
+                          $result = mysqli_query($link, $sqlcmd);
+                          $articleInfo = null;
+						
+						 if (mysqli_num_rows($result) > 0) {
+                           $articleInfo = mysqli_fetch_assoc($result);
+    				         }
+							 
+							 $IP = $_SERVER['HTTP_HOST'];
+	                       $url_downloadFile = "http://" . $IP . "/paper/Download.php?filename=" . $articleInfo["fileName"];
+						   
+						?>
                 <legend>檔案下載</legend>
                 <li class="dw-wrap">
-                    <a href="$row[1]/download/" class="dw-link dw-item">
-                        <div class="dw-name">
-						<?php echo"$row[5]";?>
+                    <a href="<?php echo $url_downloadFile;?>" class="dw-link dw-item">
+                        <div class="dw-name">檔案下載
                         </div>
                         <div class="dw-image"><img class="list-image-thumb" src="img/dw.png" alt="down"></div>
                     </a>
@@ -304,8 +317,8 @@
 					$row = mysqli_fetch_row($abc);
 					
 					?>
-                    <div class="radio-group">
-                        <input type="radio" class="radio-input" id="20" name="number5"value="17<?php
+					<div class="radio-group">
+                        <input type="radio" class="radio-input" id="20" name="number5"value="17"<?php
 						$e=$row[0]==17?'checked="checked"':'' ;echo $e;
 						?>>
                         <label for="20" class="radio-label">
@@ -528,12 +541,19 @@
                 </fieldset>
             </div>
             <fieldset>
-                <legend>給作者的意見說明</legend>
-                <div id="textareaBox" name="textareaBox" class="textareaBox">
-                    <textarea name="textarea" value="textarea" id="textarea" class="textarea" cols="30" rows="4">
+               <legend>給作者的意見說明</legend>
+				<?php
+					$sql = "SELECT * FROM selection where articleID='$id'";
+					$bbb = mysqli_query($link, $sql);
+					$row = mysqli_fetch_row($bbb);
 					
-</textarea>
-                </div>
+					?>
+					<div style="display:flex;">
+					<div class="text"><p class="textP"></p></div><div class="textPp "><textarea name="textareaBox" id="textareaBox" cols="30" rows="4"><?php
+						echo"$row[13]";
+						?></textarea></div>
+				    </div>
+				
             </fieldset>
              <div class="button-group">
                 <input class="button buttonB" id='cancel' name='but3' value="取消"  onclick="location.href='ReviewerFrontPage.php'">

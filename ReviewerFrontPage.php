@@ -16,7 +16,8 @@ function pendingreview()
 
         $link =connect(DB_HOST,DB_USER,DB_PWD,DB_DATABASE)
         or die("無法開啟資料連接!<br/>");
-		$sql = "SELECT * FROM article WHERE state = '3'";
+		$sql = "SELECT * FROM article WHERE state = '3' and id=".$_SESSION['userid'];
+		
 							
 		if ($result = mysqli_query($link,$sql))
 			{
