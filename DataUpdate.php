@@ -100,7 +100,9 @@ if (!isset($_SESSION['identity'])) {
                         <p class="textP">單位：</p>
                         
                     </div><div><select name="select" id="select">
-                            <option value="1">123</option>
+                            <option value="商務科技管理系">商務科技管理系</option>
+                            <option value="資訊管理系">資訊管理系</option>
+                            <option value="多媒體設計系">多媒體設計系</option>
                         </select></div>
                 </div>
                 <div class="button-group flex">
