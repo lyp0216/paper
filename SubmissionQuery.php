@@ -97,7 +97,7 @@ session_start();
                         <td><?php echo $row['articlename']; ?></td>
                         <td><span><?php echo $row['category']; ?></span></td>
                         <td><a href="Download.php?filename=<?php echo $row["fileName"];?>"><span><?php echo  $row["fileName"]; ?></span></a></td>
-                        <td><span><?php echo $state; ?></span></td>               
+                        <td><a href="RevisePage.php"><span><?php echo $state; ?></span></a></td>              
                     </tr> 
                  <?php
 				     }
